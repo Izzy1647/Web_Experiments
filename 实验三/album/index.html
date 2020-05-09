@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Album</title>
+    <link href="album.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="title">
+        My Album
+    </div>
+    <div id="img">
+        <p>
+            <img src="static/photo1.jpg" id="image-holder" width="600" height="400" onclick="nextPic()">
+        </p>
+        <form>
+            <input type="button" value="上一张" onclick="lastPic()">
+            <input type="button" value="下一张" onclick="nextPic()">
+            <input type="button" value="自动切换" onclick="autoChange()">
+            <input type="button" value="停止切换" onclick="stopChange()">
+        </form>
+    </div>
+
+
+    <p class =smallPic>
+        <img src="static/photo1.jpg" onclick="selPic(1)" width="120" height="80">
+        <img src="static/photo2.jpg" onclick="selPic(2)" width="120" height="80">
+        <img src="static/photo3.jpg" onclick="selPic(3)" width="120" height="80">
+        <img src="static/photo4.jpg" onclick="selPic(4)" width="120" height="80">
+        <img src="static/photo5.jpg" onclick="selPic(5)" width="120" height="80">
+    </p>
+
+</body>
+
+
+<script>
+    let index = 1
+    let intervalId = 0
+    let intervalValid = true  // 避免开好几个计时器
+    const imageHolder = document.querySelector("#image-holder")
+
+    function nextPic(){
+        index ++
+        if(index === 6){
+            alert("已经是最后一张啦")
+            index --
+        }else{
+            imageHolder.setAttribute("src",`static/photo${index}.jpg`)
+        }
+
+    }
+
+    function lastPic(){
+        index --
+        if(index === 0){
+            alert("已经是第一张啦")
+            index ++
+        }else{
+            imageHolder.setAttribute("src",`static/photo${index}.jpg`)
+        }
+
+    }
+
+    function selPic(index){
+        imageHolder.setAttribute("src",`static/photo${index}.jpg`)
+        console.log("index:",index)
+    }
+
+    function autoChange(){
+        if(intervalValid){
+            intervalValid = false  // 开着一个计时器 就不能再开另一个
+            intervalId = setInterval(function(){
+                index ++
+                imageHolder.setAttribute("src",`static/photo${index}.jpg`)
+                if(index === 5){
+                    index = 0
+                }
+            },1000)
+        }else{
+            console.log("已经有一个计时器了")
+        }
+    }
+
+    function stopChange(){
+        clearInterval(intervalId)
+        intervalValid = true
+    } 
+
+</script>
+</html>

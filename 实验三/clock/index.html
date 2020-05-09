@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebClock</title>
+</head>
+<body>
+    <div id="app">
+        <div id="dateDiv"></div>
+        <div id="timeDiv"></div>
+        <div id="buttonsDiv">
+            <input type="button" id="start" value="start">
+            <input type="button" id="pause" value="pause">
+            <input type="button" id="close" value="close">
+        </div>
+        
+        
+    </div>
+</body>
+
+<script>
+    let dateNode = document.getElementById("dateDiv")
+    let timeNode = document.getElementById("timeDiv")
+    let start = document.getElementById("start")
+    let pause = document.getElementById("pause")
+    let close = document.getElementById("close")
+    let intervalId
+
+
+    window.onload = function(){
+        startTiming()  // start timing when opening the page
+        start.addEventListener("click",startTiming)
+        pause.addEventListener("click",pauseTiming)
+        close.addEventListener("click",closeTiming)
+
+    }
+
+    function fillTime(){
+        let today = new Date()
+        // set date
+        let year = today.getFullYear(), month = today.getMonth() + 1, day = today.getDate()
+        dateNode.innerHTML = '现在是北京时间'+year+'年'+month+'月'+day+'日'      
+        // set time
+        let hour = today.getHours(), minute = today.getMinutes(), second = today.getSeconds()
+        timeNode.innerHTML = hour+':'+minute+':'+second
+    }
+
+    function startTiming(){
+        console.log("start timing...")
+        fillTime()
+        intervalId = setInterval(fillTime,1000)
+    }
+
+    function pauseTiming(){
+        clearInterval(intervalId)
+        console.log("paused")
+    }
+
+    function closeTiming(){   // close the whole page
+        window.close()
+    }
+
+
+
+</script>
+
+<style>
+    #dateDiv{
+        text-align: center;
+        font-size: 40px
+    }
+    #timeDiv{
+        text-align: center;
+        font-size: 30px
+
+    }
+    #buttonsDiv{
+        text-align: center
+    }
+</style>
+</html>
