@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>省市二级菜单</title>
+</head>
+<body>
+    <div class="container">
+        <select id="a1" onchange="addOption()" class="form-control"></select>
+        <select id="a2" class="form-control"></select>
+        <br><br><br>
+        <p>注：利用对象存储省市信息，手打了五个省份，没有打全。引入bootsrap稍微做了点美化。</p>
+    </div>
+</body>
+
+<script>
+    let city = {
+        '上海': ['虹口','宝山','静安','浦东'],
+        '江苏': ['南京','苏州','镇江'],
+        '山东': ['青岛','济南','烟台'],
+        '浙江': ['杭州','金华','义乌'],
+        '广东': ['东莞','佛山','广州']
+    }  
+     
+    function initCities() {            
+        let select1 = document.getElementById("a1")           
+        for(let i in city) {  
+            select1.add(new Option(i, i), null)   // 下拉框添加可选项
+        }   
+        addOption()  // 初始化选项     
+    }   
+
+    function addOption() {            
+        let select2 = document.getElementById("a2")
+        let select1 = document.getElementById("a1").value
+
+        select2.length = 0  //每次都先清空一下市级菜单 
+        if(select1 !== '请选择省份') {                
+            for(let i in city[select1]) {    
+                select2.add(new Option(city[select1][i], city[select1][i]), null);                
+            }            
+        }   
+    }       
+
+    window.onload = function(){
+        initCities()
+    }
+
+</script>
+
+<style>
+    .container{
+        position: relative;
+        top: 100px;
+        text-align: center;
+    }
+
+    #a1{
+        width: 100px;
+        display: inline;
+    }
+
+    #a2{
+        display: inline;
+        width: 100px;
+    }
+
+
+
+</style>
+</html>
