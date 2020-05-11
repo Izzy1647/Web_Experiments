@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格美化</title>
+    <style type="text/css">
+        body{
+            position:absolute;
+            margin-left: 30%;
+        }
+        table{
+            border: 1px solid #8f0030;
+            border-bottom: 2px solid #8f0030;
+            border-top: 2px solid #8f0030;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-collapse: collapse;
+        }
+        th{
+            background: #ffffff;
+            border-left-color: #8f0030;
+            border-right-color: #8f0030;
+            border-bottom: 2px solid #8f0030;
+            font-size: large;
+            padding:3px;
+            color:#2f0614;
+            font-family: "黑体";
+        }
+        td{
+            border-top-color: #8f0030;
+            border-bottom-color: #8f0030;
+            border-left-color: #8f0030;
+            border-right-color: #8f0030;
+            color:#2f0614;
+            padding: 3px;
+        }
+        tr.odd{
+            background: #ecbdcd;
+        }
+        tr.even{
+            background: #9E9E9E;
+        }
+        tr.mover{
+            background: #859ee0;
+            text-decoration: underline;
+        }
+        tr.click{
+            background: #d6224c;
+            font-weight:bold;
+        }
+
+    </style>
+</head>
+<script>
+    function hoverHandler(e){
+        switch(e.type){
+            case "mouseover": 
+                e.target.style.backgroundColor = 'yellow'
+                break
+            case "mouseout":
+                e.target.style.backgroundColor = ''
+                break
+        }
+    }
+
+    function tableEvent(table) {
+        let trs = table.getElementsByTagName("tr")
+        let len = trs.length
+        for(let i=1;i<len;i++){
+            trs[i].className = (i % 2 === 0) ? "even" : "odd"
+            trs[i].onmouseover = trs[i].onmouseout = hoverHandler  // set hover events
+        }
+    }
+    function click(table) {
+        let trs = table.getElementsByTagName("tr")
+        for(let i=0;i<trs.length;i++){
+            trs[i].onclick = function(){
+                for(let j=0;j<trs.length;j++){
+                    trs[j].className = (j % 2 === 0) ? "even" : "odd"
+                }
+                this.className = "click"
+            }
+
+        }
+
+    }
+    window.onload=function () {   // main function
+        let tables = document.getElementsByTagName("table")
+        tableEvent(tables[0])
+        click(tables[0])
+
+    }
+
+</script>
+<div style="text-align: center;">
+    <body>
+    <table width="500" border="1">
+        <tr>
+            <th scope="col">姓名</th>
+            <th scope="col">学号</th>
+            <th scope="col">性别</th>
+            <th scope="col">年龄</th>
+            <th scope="col">联系方式</th>
+            <th scope="col">家庭住址</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>20100001</td>
+            <td>女</td>
+            <td>22</td>
+            <td>0000000</td>
+            <td>重庆</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>20100002</td>
+            <td>男</td>
+            <td>22</td>
+            <td>0000001</td>
+            <td>四川</td>
+        </tr>
+        <tr>
+            <td>李丽</td>
+            <td>20100003</td>
+            <td>女</td>
+            <td>22</td>
+            <td>0000003</td>
+            <td>江苏</td>
+        </tr>
+        <tr>
+            <td>王平</td>
+            <td>20100004</td>
+            <td>男</td>
+            <td>21</td>
+            <td>0000006</td>
+            <td>浙江</td>
+        </tr>
+        <tr>
+            <td>林远</td>
+            <td>20100005</td>
+            <td>男</td>
+            <td>23</td>
+            <td>0000007</td>
+            <td>重庆</td>
+        </tr>
+
+    </table>
+    </body>
+</div>
+
+</html>
