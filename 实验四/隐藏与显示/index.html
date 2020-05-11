@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <title>元素隐藏与显示</title>
+</head>
+<body>
+    <div class="container">
+        <div class="target">
+            <p class="text">目标元素</p>
+        </div>
+
+        <div class="controller">
+            <button class="btn btn-success btn-primary" id="hide">隐藏该元素</button>
+            <button class="btn btn-success btn-primary" id="show">显示该元素</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 元素不显示但是位置要预留出来
+    $("#hide").click(function(){
+        $(".target").css({
+            visibility: 'hidden'
+        })
+    })
+
+    $("#show").click(function(){
+        $(".target").css({
+            visibility: 'visible'
+        })
+    })
+</script>
+
+<style>
+    .target{
+        position: relative;
+        /* top: 100px; */
+        background-color: aqua;
+        height: 100px;
+        width: 100px;
+        /* text-align: center; */
+        /* display: none; */
+        margin: 0 auto;
+    }
+
+    .container{
+        text-align: center;
+        position: relative;
+        top: 100px;
+        /* margin: 0 auto; */
+    }
+    
+    .controller{
+        margin-top: 30px;
+    }
+</style>
+
+</html>
