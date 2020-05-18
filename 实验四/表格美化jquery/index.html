@@ -1,0 +1,103 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>表格美化</title>
+
+    <!-- jquery -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <table width="300" border="1" class="table_gehang">
+            <tr class="title">
+                <th scope="col">姓名</th>
+                <th scope="col">学号</th>
+                <th scope="col">性别</th>
+                <th scope="col">年龄</th>
+                <th scope="col">联系方式</th>
+                <th scope="col">家庭住址</th>
+            </tr>
+            <tr>
+                <td align="center">张三</td>
+                <td align="center">20100001</td>
+                <td align="center">女</td>
+                <td align="center">22</td>
+                <td align="center">0000000</td>
+                <td align="center">重庆</td>
+            </tr>
+            <tr>
+                <td align="center">王五</td>
+                <td align="center">20100002</td>
+                <td align="center">男</td>
+                <td align="center">22</td>
+                <td align="center">0000001</td>
+                <td align="center">四川</td>
+            </tr>
+            <tr>
+                <td align="center">李丽</td>
+                <td align="center">20100003</td>
+                <td align="center">女</td>
+                <td align="center">22</td>
+                <td align="center">0000003</td>
+                <td align="center">江苏</td>
+            </tr>
+            <tr>
+                <td align="center">王平</td>
+                <td align="center">20100004</td>
+                <td align="center">男</td>
+                <td align="center">21</td>
+                <td align="center">0000006</td>
+                <td align="center">浙江</td>
+            </tr>
+            <tr>
+                <td align="center">林远</td>
+                <td align="center">20100005</td>
+                <td align="center">男</td>
+                <td align="center">23</td>
+                <td align="center">0000007</td>
+                <td align="center">重庆</td>
+            </tr>
+            
+        </table>
+    </div>
+</body>
+
+
+<script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+        $("tr").mouseover(function(){
+            $(this).addClass("four")
+        })
+
+        $("tr").mouseout(function(){
+            $(this).removeClass("four")
+        })
+
+        $("tr:first").addClass("three")
+        $("tr:last").addClass("three")
+        $("tr:even").addClass("one")
+        $("tr:odd").addClass("two")
+    })
+</script>
+
+
+<style type="text/css">
+    .one{
+        background:rgb(135, 108, 199);
+    }
+    .two{
+        background:rgb(202, 144, 105);
+    }
+    .three{
+        background:rgb(124, 160, 59);
+    }
+    .four{
+        background:rgb(197, 182, 197);
+    }
+</style>
+
+
+</html>
