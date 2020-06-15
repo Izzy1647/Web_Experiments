@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT 联系人列表（联系人）*>
+<!ELEMENT 联系人（姓名，EMAIL，地址）>
+<!ELEMENT 地址（街道，城市，省份）>
+<!ELEMENT 姓名（#PCDATA）>
+<!ELEMENT EMAIL（#PCDATA）>
+<!ELEMENT 街道（#PCDATA）>
+<!ELEMENT 城市（#PCDATA）>
+<!ELEMENT 省份（#PCDATA）>

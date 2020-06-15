@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天气预报</title>
+
+    <!-- jquery -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="container">
+        <h2>实时天气</h2>
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                <input type="text" class="form-control" id="city-input" placeholder="输入城市名">
+                </div>
+            </div>
+            <input type="button" class="btn btn-primary" onclick="search()" value="查询">
+        </form>
+
+        <div id="result">
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th>体感温度(摄氏度)</th>
+                      <th>实时温度(摄氏度)</th>
+                      <th>相对湿度(%RH)</th>
+                      <th>能见度(km)</th>
+                      <th>降水量(mm)</th>
+                      <th>大气压强(Pa)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td id="fl">1</td>
+                        <td id="tmp">2</td>
+                        <td id="hum">3</td>
+                        <td id="vis">4</td>
+                        <td id="pcpn">5</td>
+                        <td id="pres">6</td>
+                    </tr>
+    
+                  </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    let weatherInfo = {}
+    function search(){
+        let cityName = $("#city-input").val()
+        $.get("https://free-api.heweather.net/s6/weather/now",{
+            location: cityName,
+            key: "8a9a3a3fafb74d7faf9009127ab6f865"
+        },(data,textStatus)=>{
+            console.log(data)
+            weatherInfo = data.HeWeather6[0].now
+            console.log(weatherInfo)
+
+            if(weatherInfo){
+                for(let key in weatherInfo){
+                    $(`#${key}`).text(weatherInfo[key])
+                }
+                $("#result").css({
+                    visibility: 'visible'
+                })
+            }else{
+                alert("查询失败，检查城市名是否正确")
+            }
+
+        })
+    }
+
+</script>
+
+<style>
+    #submit{
+        margin-top: 10px;
+    }
+    #result{
+        margin-top: 10px;
+        visibility: hidden;
+    }
+</style>
+</html>

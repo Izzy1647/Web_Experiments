@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<booklist xmlns="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ex_5_17.xsd">
+    <book classify="自然科学">
+        <ISBN>7-302-12066-8</ISBN>
+        <title>JAVA实用教程</title>
+        <authorlist>
+            <author>Herbert Schildt</author>
+            <author>马海军</author>
+        </authorlist>
+        <price>64.00</price>
+    </book>
+    <book classify="社会科学">
+        <IBSN>7-5037-1978</IBSN>
+        <title>投资学</title>
+        <authorlist>
+            <author>张中华</author>
+            <author>谢进程</author>
+        </authorlist>
+        <price>19.00</price>
+    </book>
+</booklist>

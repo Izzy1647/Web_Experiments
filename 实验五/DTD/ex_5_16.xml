@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE 联系人列表 SYSTEM "ex_5_16.dtd">
+<联系人列表>
+    <联系人>
+        <姓名>张三</姓名>
+        <EMAIL>zhang@aaa.com</EMAIL>
+        <地址>
+            <街道>五街1234号</街道><城市>北京市</城市><省份>北京</省份>
+        </地址>
+    </联系人>
+</联系人列表>

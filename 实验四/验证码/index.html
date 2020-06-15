@@ -38,64 +38,7 @@
 
 
 <script>
-    String.prototype.shuffle = function(){  // 封装一个给字符串乱序的方法
-        let arr = this.split('')
-        for(let i=arr.length-1;i>=0;i--){
-            let randomIndex = Math.floor(Math.random()*arr.length)
-            let temp = arr[i]
-            arr[i] = arr[randomIndex]
-            arr[randomIndex] = temp
-        }
-        return arr.join('')
-    }
-
-
-
-    let verifyCode = ''
-
-    window.onload = function(){
-        generateRandomCode()
-    }
-
-
-    function random(max,min){  // 生成范围内随机数
-        return Math.round(Math.random()*(max-min)+min);
-    }
-
-    function generateRandomCode(){  // 生成4位验证码
-        let az = String.fromCharCode(random(97,122))  
-        let AZ = String.fromCharCode(random(65,90))  
-        let digit1 = Math.floor(Math.random()*10)  
-        let digit2 = Math.floor(Math.random()*10)
-        verifyCode = az + AZ + digit1 + digit2
-        verifyCode = verifyCode.shuffle()
-
-        let vcode = document.querySelectorAll(".code")
-        vcode[0].innerHTML = "验证码："+verifyCode
-    }
-
-    // 刷新验证码
-    document.getElementById("refresh").addEventListener("click",()=>{
-        generateRandomCode()
-    })
-
-    // 校验验证码
-    document.getElementById("verify").addEventListener("click",()=>{
-        let input = document.getElementById("input").value
-        if(input.toUpperCase() === verifyCode.toUpperCase()){  // 不区分大小写
-            alert("验证码正确")
-        }else{
-            alert("验证失败，请重试")
-        }
-
-        generateRandomCode()  // 重置
-        document.getElementById("input").value = ''
-
-    })
     
-    
-
-
 </script>
 
 <style>
